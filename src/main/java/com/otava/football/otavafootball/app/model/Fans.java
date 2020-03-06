@@ -1,33 +1,47 @@
 package com.otava.football.otavafootball.app.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "fans")
 public class Fans {
 
-//    todo club as id
-    private Club club;
-    private String name;
-    private Integer count;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "fans_id", unique = true, nullable = false)
+  private Integer fansId;
 
-    public Club getClub() {
-        return club;
-    }
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "club_id")
+  private Club club;
 
-    public void setClub(Club club) {
-        this.club = club;
-    }
+  @Column(name = "name")
+  private String name;
 
-    public String getName() {
-        return name;
-    }
+  @Column(name = "count")
+  private Integer count;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public Club getClub() {
+    return club;
+  }
 
-    public Integer getCount() {
-        return count;
-    }
+  public void setClub(Club club) {
+    this.club = club;
+  }
 
-    public void setCount(Integer count) {
-        this.count = count;
-    }
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Integer getCount() {
+    return count;
+  }
+
+  public void setCount(Integer count) {
+    this.count = count;
+  }
 }

@@ -1,9 +1,18 @@
 package com.otava.football.otavafootball.app.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "game")
 public class Game {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = " game_id", unique = true, nullable = false)
     private Integer gameId;
+    @OneToMany(mappedBy = "team")
     private Team homeTeam;
+    @OneToMany(mappedBy = "team")
     private Team awayTeam;
 //    todo nested classes qwith goals and cards
 

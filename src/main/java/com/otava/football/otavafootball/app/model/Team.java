@@ -1,14 +1,23 @@
 package com.otava.football.otavafootball.app.model;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.util.List;
 
 public class Team {
 
     private Integer teamId;
     private List<Player> players;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id")
     private Club club;
     private Manager manager;
+//    make two classes of past and future
     private List<Game> gamesPlayed;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
     private List<Game> gamesInFuture;
 
     public Integer getTeamId() {

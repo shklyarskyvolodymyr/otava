@@ -1,17 +1,35 @@
 package com.otava.football.otavafootball.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+/**
+ * Represents a football club which can have manager and team.
+ *
+ * <p>ManyToMany mapping with movie
+ */
 @Entity
 @Table(name = "club")
 public class Club {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "club_id", unique = true, nullable = false)
     private Integer clubId;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "club")
     private Manager manager;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "club")
     private Team team;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "club")
     private Stadium stadium;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "club")
+    private Fans fans;
+
+    @Column(name = "money")
     private BigDecimal money;
 
     public Integer getClubId() {

@@ -1,11 +1,25 @@
 package com.otava.football.otavafootball.app.model;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 public class Stadium {
 
-//    todo club as id
+    private Integer stadiumId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id")
     private Club club;
     private String name;
     private Integer seats;
+
+    public Integer getStadiumId() {
+        return stadiumId;
+    }
+
+    public void setStadiumId(Integer stadiumId) {
+        this.stadiumId = stadiumId;
+    }
 
     public Club getClub() {
         return club;

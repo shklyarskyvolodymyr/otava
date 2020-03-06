@@ -1,5 +1,8 @@
 package com.otava.football.otavafootball.app.model;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 public class Manager {
@@ -8,6 +11,8 @@ public class Manager {
     private Integer age;
     private Date connected;
     private Team team;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id")
     private Club club;
 
     public Integer getManagerId() {
