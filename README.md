@@ -1,4 +1,6 @@
-Footbal manager app Otava
+## Footbal manager app Otava
+
+[![Build Status](https://travis-ci.org/shklyarskyvolodymyr/movieapp.svg?branch=develop)](https://travis-ci.org/shklyarskyvolodymyr/movieapp)
 
 ### Development Prerequisites
 - Java 11
