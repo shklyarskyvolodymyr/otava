@@ -1,57 +1,68 @@
 package com.otava.football.otavafootball.app.model;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "manager")
 public class Manager {
 
-    private Integer managerId;
-    private Integer age;
-    private Date connected;
-    private Team team;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id")
-    private Club club;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "manager_id", unique = true, nullable = false)
+  private Integer managerId;
 
-    public Integer getManagerId() {
-        return managerId;
-    }
+  @Column(name = "age")
+  private Integer age;
 
-    public void setManagerId(Integer managerId) {
-        this.managerId = managerId;
-    }
+  @Column(name = "connected")
+  private Date connected;
 
-    public Integer getAge() {
-        return age;
-    }
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "team_id")
+  private Team team;
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "club_id")
+  private Club club;
 
-    public Date getConnected() {
-        return connected;
-    }
+  public Integer getManagerId() {
+    return managerId;
+  }
 
-    public void setConnected(Date connected) {
-        this.connected = connected;
-    }
+  public void setManagerId(Integer managerId) {
+    this.managerId = managerId;
+  }
 
-    public Team getTeam() {
-        return team;
-    }
+  public Integer getAge() {
+    return age;
+  }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
+  public void setAge(Integer age) {
+    this.age = age;
+  }
 
-    public Club getClub() {
-        return club;
-    }
+  public Date getConnected() {
+    return connected;
+  }
 
-    public void setClub(Club club) {
-        this.club = club;
-    }
+  public void setConnected(Date connected) {
+    this.connected = connected;
+  }
+
+  public Team getTeam() {
+    return team;
+  }
+
+  public void setTeam(Team team) {
+    this.team = team;
+  }
+
+  public Club getClub() {
+    return club;
+  }
+
+  public void setClub(Club club) {
+    this.club = club;
+  }
 }

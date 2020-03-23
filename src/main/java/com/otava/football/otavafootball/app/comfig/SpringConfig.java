@@ -16,10 +16,10 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan("com.otava.football.otavafootball.app.comfig")
+@ComponentScan("com.otava.football.otavafootball.app")
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.otava.football.otavafootball.app.comfig")
+@EnableJpaRepositories(basePackages = "com.otava.football.otavafootball.app")
 public class SpringConfig {
 
     @Value("${config.driver}")

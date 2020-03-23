@@ -1,47 +1,55 @@
 package com.otava.football.otavafootball.app.model;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "stadium")
 public class Stadium {
 
-    private Integer stadiumId;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id")
-    private Club club;
-    private String name;
-    private Integer seats;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "stadium_id", unique = true, nullable = false)
+  private Integer stadiumId;
 
-    public Integer getStadiumId() {
-        return stadiumId;
-    }
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "club_id")
+  private Club club;
 
-    public void setStadiumId(Integer stadiumId) {
-        this.stadiumId = stadiumId;
-    }
+  @Column(name = "name")
+  private String name;
 
-    public Club getClub() {
-        return club;
-    }
+  @Column(name = "seats")
+  private Integer seats;
 
-    public void setClub(Club club) {
-        this.club = club;
-    }
+  public Integer getStadiumId() {
+    return stadiumId;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setStadiumId(Integer stadiumId) {
+    this.stadiumId = stadiumId;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public Club getClub() {
+    return club;
+  }
 
-    public Integer getSeats() {
-        return seats;
-    }
+  public void setClub(Club club) {
+    this.club = club;
+  }
 
-    public void setSeats(Integer seats) {
-        this.seats = seats;
-    }
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Integer getSeats() {
+    return seats;
+  }
+
+  public void setSeats(Integer seats) {
+    this.seats = seats;
+  }
 }

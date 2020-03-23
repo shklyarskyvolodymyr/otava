@@ -1,106 +1,133 @@
 package com.otava.football.otavafootball.app.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "player")
 public class Player {
 
-    private Integer playerId;
-    private String name;
-    private Byte number;
-    private Date bornDate;
-    private Team team;
-    private String position;
-    private byte goalkeeping;
-    private byte defending;
-    private byte Middlefield;
-    private byte attack;
-    private byte shoots;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "player_id", unique = true, nullable = false)
+  private Integer playerId;
 
-    public Integer getPlayerId() {
-        return playerId;
-    }
+  @Column(name = "name")
+  private String name;
 
-    public void setPlayerId(Integer playerId) {
-        this.playerId = playerId;
-    }
+  @Column(name = "number")
+  private Byte number;
 
-    public String getName() {
-        return name;
-    }
+  @Column(name = "born_date")
+  private Date bornDate;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  @ManyToOne
+  @JoinColumn(name = "team_id")
+  private Team team;
 
-    public Byte getNumber() {
-        return number;
-    }
+  @Column(name = "position")
+  private String position;
 
-    public void setNumber(Byte number) {
-        this.number = number;
-    }
+  @Column(name = "goal_keeping")
+  private byte goalkeeping;
 
-    public Date getBornDate() {
-        return bornDate;
-    }
+  @Column(name = "defending")
+  private byte defending;
 
-    public void setBornDate(Date bornDate) {
-        this.bornDate = bornDate;
-    }
+  @Column(name = "middlefield")
+  private byte Middlefield;
 
-    public Team getTeam() {
-        return team;
-    }
+  @Column(name = "attack")
+  private byte attack;
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
+  @Column(name = "shoots")
+  private byte shoots;
 
-    public String getPosition() {
-        return position;
-    }
+  public Integer getPlayerId() {
+    return playerId;
+  }
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
+  public void setPlayerId(Integer playerId) {
+    this.playerId = playerId;
+  }
 
-    public byte getGoalkeeping() {
-        return goalkeeping;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setGoalkeeping(byte goalkeeping) {
-        this.goalkeeping = goalkeeping;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public byte getDefending() {
-        return defending;
-    }
+  public Byte getNumber() {
+    return number;
+  }
 
-    public void setDefending(byte defending) {
-        this.defending = defending;
-    }
+  public void setNumber(Byte number) {
+    this.number = number;
+  }
 
-    public byte getMiddlefield() {
-        return Middlefield;
-    }
+  public Date getBornDate() {
+    return bornDate;
+  }
 
-    public void setMiddlefield(byte middlefield) {
-        Middlefield = middlefield;
-    }
+  public void setBornDate(Date bornDate) {
+    this.bornDate = bornDate;
+  }
 
-    public byte getAttack() {
-        return attack;
-    }
+  public Team getTeam() {
+    return team;
+  }
 
-    public void setAttack(byte attack) {
-        this.attack = attack;
-    }
+  public void setTeam(Team team) {
+    this.team = team;
+  }
 
-    public byte getShoots() {
-        return shoots;
-    }
+  public String getPosition() {
+    return position;
+  }
 
-    public void setShoots(byte shoots) {
-        this.shoots = shoots;
-    }
+  public void setPosition(String position) {
+    this.position = position;
+  }
+
+  public byte getGoalkeeping() {
+    return goalkeeping;
+  }
+
+  public void setGoalkeeping(byte goalkeeping) {
+    this.goalkeeping = goalkeeping;
+  }
+
+  public byte getDefending() {
+    return defending;
+  }
+
+  public void setDefending(byte defending) {
+    this.defending = defending;
+  }
+
+  public byte getMiddlefield() {
+    return Middlefield;
+  }
+
+  public void setMiddlefield(byte middlefield) {
+    Middlefield = middlefield;
+  }
+
+  public byte getAttack() {
+    return attack;
+  }
+
+  public void setAttack(byte attack) {
+    this.attack = attack;
+  }
+
+  public byte getShoots() {
+    return shoots;
+  }
+
+  public void setShoots(byte shoots) {
+    this.shoots = shoots;
+  }
 }

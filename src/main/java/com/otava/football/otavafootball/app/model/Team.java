@@ -1,70 +1,69 @@
 package com.otava.football.otavafootball.app.model;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "team")
 public class Team {
 
-    private Integer teamId;
-    private List<Player> players;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id")
-    private Club club;
-    private Manager manager;
-//    make two classes of past and future
-    private List<Game> gamesPlayed;
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private List<Game> gamesInFuture;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "team_id", unique = true, nullable = false)
+  private Integer teamId;
 
-    public Integer getTeamId() {
-        return teamId;
-    }
+  @OneToMany(mappedBy = "team")
+  private List<Player> players;
 
-    public void setTeamId(Integer teamId) {
-        this.teamId = teamId;
-    }
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "club_id")
+  private Club club;
 
-    public List<Player> getPlayers() {
-        return players;
-    }
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "manager")
+  private Manager manager;
+  //   todo  make two classes of past and future
+  //    private List<Game> gamesPlayed;
+  @ManyToOne
+  @JoinColumn(name = "team_id")
+  private List<Game> gamesInFuture;
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
+  public Integer getTeamId() {
+    return teamId;
+  }
 
-    public Club getClub() {
-        return club;
-    }
+  public void setTeamId(Integer teamId) {
+    this.teamId = teamId;
+  }
 
-    public void setClub(Club club) {
-        this.club = club;
-    }
+  public List<Player> getPlayers() {
+    return players;
+  }
 
-    public Manager getManager() {
-        return manager;
-    }
+  public void setPlayers(List<Player> players) {
+    this.players = players;
+  }
 
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
+  public Club getClub() {
+    return club;
+  }
 
-    public List<Game> getGamesPlayed() {
-        return gamesPlayed;
-    }
+  public void setClub(Club club) {
+    this.club = club;
+  }
 
-    public void setGamesPlayed(List<Game> gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
-    }
+  public Manager getManager() {
+    return manager;
+  }
 
-    public List<Game> getGamesInFuture() {
-        return gamesInFuture;
-    }
+  public void setManager(Manager manager) {
+    this.manager = manager;
+  }
 
-    public void setGamesInFuture(List<Game> gamesInFuture) {
-        this.gamesInFuture = gamesInFuture;
-    }
+  public List<Game> getGamesInFuture() {
+    return gamesInFuture;
+  }
+
+  public void setGamesInFuture(List<Game> gamesInFuture) {
+    this.gamesInFuture = gamesInFuture;
+  }
 }

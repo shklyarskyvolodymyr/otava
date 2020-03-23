@@ -6,38 +6,39 @@ import javax.persistence.*;
 @Table(name = "game")
 public class Game {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = " game_id", unique = true, nullable = false)
-    private Integer gameId;
-    @OneToMany(mappedBy = "team")
-    private Team homeTeam;
-    @OneToMany(mappedBy = "team")
-    private Team awayTeam;
-//    todo nested classes qwith goals and cards
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "game_id", unique = true, nullable = false)
+  private Integer gameId;
 
+  @OneToMany(mappedBy = "team")
+  private Team homeTeam;
 
-    public Integer getGameId() {
-        return gameId;
-    }
+  @OneToMany(mappedBy = "team")
+  private Team awayTeam;
+  //    todo nested classes qwith goals and cards
 
-    public void setGameId(Integer gameId) {
-        this.gameId = gameId;
-    }
+  public Integer getGameId() {
+    return gameId;
+  }
 
-    public Team getHomeTeam() {
-        return homeTeam;
-    }
+  public void setGameId(Integer gameId) {
+    this.gameId = gameId;
+  }
 
-    public void setHomeTeam(Team homeTeam) {
-        this.homeTeam = homeTeam;
-    }
+  public Team getHomeTeam() {
+    return homeTeam;
+  }
 
-    public Team getAwayTeam() {
-        return awayTeam;
-    }
+  public void setHomeTeam(Team homeTeam) {
+    this.homeTeam = homeTeam;
+  }
 
-    public void setAwayTeam(Team awayTeam) {
-        this.awayTeam = awayTeam;
-    }
+  public Team getAwayTeam() {
+    return awayTeam;
+  }
+
+  public void setAwayTeam(Team awayTeam) {
+    this.awayTeam = awayTeam;
+  }
 }
